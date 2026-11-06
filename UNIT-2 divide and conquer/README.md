@@ -21,6 +21,7 @@ Merge Sort
 Quick Sort
 Recursive Bubble Sort
 Recursive Insertion Sort
+Heap Sort
 
 3. Iterative Binary Search
 
@@ -289,8 +290,69 @@ Sample Input
 Sample Output
 5 6 11 12 13
 
+9. Heap Sort
 
-9. Comparison of Algorithms
+Problem Statement
+Given an unsorted array of elements, sort the array in ascending order using the Heap Sort algorithm.
+
+Algorithm / Approach
+Heap Sort uses a Binary Heap data structure to sort elements. It works in two phases:
+
+1. Build Max Heap: Convert the given array into a Max Heap, where the parent node is always greater than or equal to its children.
+
+2. Sorting: Swap the root element (largest element) with the last element of the heap. Reduce the heap size by one and apply the heapify operation to maintain the Max Heap property. Repeat until the entire array is sorted.
+
+Pseudocode
+
+HEAP_SORT(array, n)
+
+    // Build Max Heap
+    FOR i = n/2 - 1 DOWNTO 0
+        HEAPIFY(array, n, i)
+
+    // Extract elements one by one
+    FOR i = n - 1 DOWNTO 1
+
+        SWAP(array[0], array[i])
+
+        HEAPIFY(array, i, 0)
+
+
+HEAPIFY(array, n, i)
+
+    largest = i
+    left = 2*i + 1
+    right = 2*i + 2
+
+    IF left < n AND array[left] > array[largest]
+        largest = left
+
+    IF right < n AND array[right] > array[largest]
+        largest = right
+
+    IF largest != i
+        SWAP(array[i], array[largest])
+
+        HEAPIFY(array, n, largest)
+
+
+Complexity Analysis
+
+Case	Time Complexity
+Best Case	O(n log n)
+Average Case	O(n log n)
+Worst Case	O(n log n)
+
+Space Complexity: O(log n) auxiliary space due to recursive heapify calls. (O(1) if iterative heapify is used.)
+
+Sample Input
+Array: 12 11 13 5 6 7
+
+Sample Output
+Sorted Array: 5 6 7 11 12 13
+
+
+10. Comparison of Algorithms
 
 Algorithm                  Best Case    Average Case   Worst Case   Space
 
@@ -305,7 +367,7 @@ Recursive Insertion Sort   O(n)         O(n²)          O(n²)        O(n)
 require O(n) stack space in the worst case.
 
 
-10. Learning Outcomes
+11. Learning Outcomes
 
 After completing this unit, the following concepts were studied:
 
@@ -323,7 +385,7 @@ Comparing time and space complexity.
 Understanding best, average, and worst-case complexity.
 Implementing algorithms using C++.
 
-11. Files in This Unit
+12. Files in This Unit
 
 Unit-2-divide-and-conquer/
 │
@@ -333,9 +395,10 @@ Unit-2-divide-and-conquer/
 ├── recursiveBinarySearch.cpp
 ├── recursiveBubbleSort.cpp
 ├── recursiveInsertionSort.cpp
+├── heapSort.cpp
 └── README.md
 
-12. Conclusion
+13. Conclusion
 
 This unit introduces Divide and Conquer and recursive approaches for
 solving searching and sorting problems. The implementations demonstrate
