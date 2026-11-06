@@ -339,9 +339,9 @@ HEAPIFY(array, n, i)
 Complexity Analysis
 
 Case	Time Complexity
-Best Case	O(n log n)
-Average Case	O(n log n)
-Worst Case	O(n log n)
+Best Case	 O(n log n)
+Average Case O(n log n)
+Worst Case	 O(n log n)
 
 Space Complexity: O(log n) auxiliary space due to recursive heapify calls. (O(1) if iterative heapify is used.)
 
@@ -352,7 +352,79 @@ Sample Output
 Sorted Array: 5 6 7 11 12 13
 
 
-10. Comparison of Algorithms
+10. Strassen Matrix Multiplication 
+
+Problem Statement
+
+Given two square matrices of order n * n, multiply them using Strassen's Matrix Multiplication algorithm to obtain the resultant matrix.
+
+Algorithm / Approach
+
+Strassen's Matrix Multiplication is a divide-and-conquer algorithm used to multiply two matrices efficiently. It divides both matrices into four equal-sized submatrices and performs seven recursive multiplications instead of the eight multiplications required by conventional matrix multiplication.
+
+The algorithm works in the following steps:
+1. Divide: Divide both matrices into four equal-sized submatrices.
+2. Calculate: Compute seven products (P1 to P7) using matrix addition and subtraction.
+3. Combine: Use these seven products to calculate the four submatrices of the resultant matrix.
+4. Repeat: Continue recursively until the matrix size becomes 1 × 1.
+
+Pseudocode
+
+STRASSEN(A, B, n)
+
+    IF n == 1
+        RETURN A[0][0] * B[0][0]
+
+    Divide A into:
+        A11, A12
+        A21, A22
+
+    Divide B into:
+        B11, B12
+        B21, B22
+
+    P1 = STRASSEN(A11, B12 - B22)
+    P2 = STRASSEN(A11 + A12, B22)
+    P3 = STRASSEN(A21 + A22, B11)
+    P4 = STRASSEN(A22, B21 - B11)
+    P5 = STRASSEN(A11 + A22, B11 + B22)
+    P6 = STRASSEN(A12 - A22, B21 + B22)
+    P7 = STRASSEN(A11 - A21, B11 + B12)
+
+    C11 = P5 + P4 - P2 + P6
+    C12 = P1 + P2
+    C21 = P3 + P4
+    C22 = P5 + P1 - P3 - P7
+
+    Combine C11, C12, C21, C22
+
+    RETURN C
+
+
+Complexity Analysis
+
+Case	Time Complexity
+Best Case	 O(n^2.807)
+Average Case O(n^2.807)
+Worst Case	 O(n^2.807)
+
+Space Complexity: O(n²) auxiliary space for storing intermediate matrices (implementation-dependent).
+
+Sample Input
+Matrix A:
+1 2
+3 4
+
+Matrix B:
+5 6
+7 8
+
+Sample Output
+Resultant Matrix:
+19 22
+43 50
+
+11. Comparison of Algorithms
 
 Algorithm                  Best Case    Average Case   Worst Case   Space
 
@@ -362,12 +434,13 @@ Merge Sort                 O(n log n)   O(n log n)     O(n log n)   O(n)
 Quick Sort                 O(n log n)   O(n log n)     O(n²)        O(log n)*
 Recursive Bubble Sort      O(n)         O(n²)          O(n²)        O(n)
 Recursive Insertion Sort   O(n)         O(n²)          O(n²)        O(n)
-
+Heap Sort                  O(n log n)   O(n log n)     O(n log n)   O(n log n)
+ 
 *Quick Sort uses O(log n) auxiliary stack space on average and can
 require O(n) stack space in the worst case.
 
 
-11. Learning Outcomes
+12. Learning Outcomes
 
 After completing this unit, the following concepts were studied:
 
@@ -385,7 +458,7 @@ Comparing time and space complexity.
 Understanding best, average, and worst-case complexity.
 Implementing algorithms using C++.
 
-12. Files in This Unit
+13. Files in This Unit
 
 Unit-2-divide-and-conquer/
 │
@@ -396,9 +469,10 @@ Unit-2-divide-and-conquer/
 ├── recursiveBubbleSort.cpp
 ├── recursiveInsertionSort.cpp
 ├── heapSort.cpp
+├── strassenMatrixMultiplication.cpp
 └── README.md
 
-13. Conclusion
+14. Conclusion
 
 This unit introduces Divide and Conquer and recursive approaches for
 solving searching and sorting problems. The implementations demonstrate
