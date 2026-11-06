@@ -1,42 +1,37 @@
-Unit 02 -- Divide and Conquer
+# Unit 02 – Divide and Conquer
 
-1. Overview
+## 1. Overview
 
-This unit introduces the Divide and Conquer approach and recursive
-techniques for solving searching and sorting problems. The programs
-included in this unit demonstrate Binary Search, Merge Sort, Quick Sort,
-and recursive implementations of Bubble Sort and Insertion Sort.
+This unit introduces the Divide and Conquer approach and recursive techniques for solving searching and sorting problems. The programs included in this unit demonstrate Binary Search, Merge Sort, Quick Sort, and recursive implementations of Bubble Sort and Insertion Sort.
 
-The unit focuses on breaking a problem into smaller parts, solving those
-parts recursively or independently, and combining the results where
-required.
+The unit focuses on breaking a problem into smaller parts, solving those parts recursively or independently, and combining the results where required.
 
-2. Algorithms Implemented
+## 2. Algorithms Implemented
 
 The following algorithms are implemented in this unit:
 
-Iterative Binary Search
-Recursive Binary Search
-Merge Sort
-Quick Sort
-Recursive Bubble Sort
-Recursive Insertion Sort
-Heap Sort
+1. Iterative Binary Search
+2. Recursive Binary Search
+3. Merge Sort
+4. Quick Sort
+5. Recursive Bubble Sort
+6. Recursive Insertion Sort
+7. Heap Sort
+8. Strassen Matrix Multiplication
 
-3. Iterative Binary Search
+## 3. Iterative Binary Search
 
-Problem Statement
-Given a sorted array and a target value, find the position of the target
-element using Binary Search without recursion.
+### Problem Statement
 
-Algorithm / Approach
-Binary Search repeatedly divides the search range into two halves. The
-middle element is compared with the target. If the target is larger, the
-left boundary is moved to the right half; otherwise, the right boundary
-is moved to the left half.
+Given a sorted array and a target value, find the position of the target element using Binary Search without recursion.
 
-Pseudocode
+### Algorithm / Approach
 
+Binary Search repeatedly divides the search range into two halves. The middle element is compared with the target. If the target is larger, the left boundary is moved to the right half; otherwise, the right boundary is moved to the left half.
+
+### Pseudocode
+
+```text
 BINARY_SEARCH(array, target)
 
     left = 0
@@ -56,37 +51,44 @@ BINARY_SEARCH(array, target)
             right = mid - 1
 
     RETURN -1
+```
 
+### Complexity Analysis
 
-Complexity Analysis
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(1) |
+| Average Case | O(log n) |
+| Worst Case | O(log n) |
 
-Case           Time Complexity
-Best Case      O(1)
-Average Case   O(log n)
-Worst Case     O(log n)
+**Space Complexity:** O(1)
 
-Space Complexity: O(1)
+### Sample Input
 
-Sample Input
+```text
 Array: 10 20 30 40 50 60 70
 Target: 40
+```
 
-Sample Output
+### Sample Output
+
+```text
 Element found at index: 3
+```
 
-4. Recursive Binary Search
+## 4. Recursive Binary Search
 
-Problem Statement
-Given a sorted array and a target value, find the position of the target
-element using Binary Search recursively.
+### Problem Statement
 
-Algorithm / Approach
-The array is divided into two halves at every recursive call. The middle
-element is compared with the target, and only the half that can contain
-the target is searched further.
+Given a sorted array and a target value, find the position of the target element using Binary Search recursively.
 
-Pseudocode
+### Algorithm / Approach
 
+The array is divided into two halves at every recursive call. The middle element is compared with the target, and only the half that can contain the target is searched further.
+
+### Pseudocode
+
+```text
 RECURSIVE_BINARY_SEARCH(array, left, right, target)
 
     IF left > right
@@ -101,36 +103,44 @@ RECURSIVE_BINARY_SEARCH(array, left, right, target)
         RETURN RECURSIVE_BINARY_SEARCH(array, mid + 1, right, target)
 
     RETURN RECURSIVE_BINARY_SEARCH(array, left, mid - 1, target)
+```
 
-Complexity Analysis
+### Complexity Analysis
 
-Case           Time Complexity
-Best Case      O(1)
-Average Case   O(log n)
-Worst Case     O(log n)
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(1) |
+| Average Case | O(log n) |
+| Worst Case | O(log n) |
 
-Space Complexity: O(log n) due to the recursive call stack.
+**Space Complexity:** O(log n) due to the recursive call stack.
 
-Sample Input
+### Sample Input
+
+```text
 Array: 10 20 30 40 50 60 70
 Target: 40
+```
 
-Sample Output
+### Sample Output
+
+```text
 Element found at index: 3
+```
 
-5. Merge Sort
+## 5. Merge Sort
 
-Problem Statement
+### Problem Statement
+
 Sort the given array in ascending order using the Merge Sort algorithm.
 
-Algorithm / Approach
-Merge Sort follows the Divide and Conquer approach. The array is
-repeatedly divided into two halves until single-element subarrays are
-obtained. The sorted subarrays are then merged to produce the final
-sorted array.
+### Algorithm / Approach
 
-Pseudocode
+Merge Sort follows the Divide and Conquer approach. The array is repeatedly divided into two halves until single-element subarrays are obtained. The sorted subarrays are then merged to produce the final sorted array.
 
+### Pseudocode
+
+```text
 MERGE_SORT(array, left, right)
 
     IF left >= right
@@ -142,36 +152,45 @@ MERGE_SORT(array, left, right)
     MERGE_SORT(array, mid + 1, right)
 
     MERGE(array, left, mid, right)
+```
 
-Complexity Analysis
+### Complexity Analysis
 
-Case           Time Complexity
-Best Case      O(n log n)
-Average Case   O(n log n)
-Worst Case     O(n log n)
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(n log n) |
+| Average Case | O(n log n) |
+| Worst Case | O(n log n) |
 
-Space Complexity: O(n)
+**Space Complexity:** O(n)
 
-Sample Input
+### Sample Input
+
+```text
 38 27 43 3 9 82 10
+```
 
-Sample Output
+### Sample Output
+
+```text
 3 9 10 27 38 43 82
+```
 
-6. Quick Sort
+## 6. Quick Sort
 
-Problem Statement
+### Problem Statement
+
 Sort the given array in ascending order using the Quick Sort algorithm.
 
-Algorithm / Approach
-Quick Sort selects a pivot element and partitions the array so that
-elements smaller than the pivot are placed before it and larger elements
-are placed after it. The two resulting parts are then sorted
-recursively.
+### Algorithm / Approach
+
+Quick Sort selects a pivot element and partitions the array so that elements smaller than the pivot are placed before it and larger elements are placed after it. The two resulting parts are then sorted recursively.
+
 The implementation in this unit uses the last element as the pivot.
 
-Pseudocode
+### Pseudocode
 
+```text
 QUICK_SORT(array, low, high)
 
     IF low >= high
@@ -181,37 +200,45 @@ QUICK_SORT(array, low, high)
 
     QUICK_SORT(array, low, pivotIndex - 1)
     QUICK_SORT(array, pivotIndex + 1, high)
+```
 
-Complexity Analysis
+### Complexity Analysis
 
-Case           Time Complexity
-Best Case      O(n log n)
-Average Case   O(n log n)
-Worst Case     O(n²)
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(n log n) |
+| Average Case | O(n log n) |
+| Worst Case | O(n²) |
 
-Space Complexity: O(log n) on average due to recursion, and O(n) in the
-worst case.
+**Space Complexity:** O(log n) on average due to recursion, and O(n) in the worst case.
 
-Sample Input
+### Sample Input
+
+```text
 10 7 8 9 1 5
+```
 
-Sample Output
+### Sample Output
+
+```text
 1 5 7 8 9 10
+```
 
-7. Recursive Bubble Sort
+## 7. Recursive Bubble Sort
 
-Problem Statement
-Sort an array in ascending order using a recursive version of the Bubble
-Sort algorithm.
+### Problem Statement
 
-Algorithm / Approach
-One complete Bubble Sort pass moves the largest element of the current
-unsorted portion to the end. The algorithm then recursively sorts the
-remaining portion of the array.
+Sort an array in ascending order using a recursive version of the Bubble Sort algorithm.
+
+### Algorithm / Approach
+
+One complete Bubble Sort pass moves the largest element of the current unsorted portion to the end. The algorithm then recursively sorts the remaining portion of the array.
+
 The implementation also stops early if no swapping occurs during a pass.
 
-Pseudocode
+### Pseudocode
 
+```text
 RECURSIVE_BUBBLE_SORT(array, n)
 
     IF n <= 1
@@ -229,35 +256,43 @@ RECURSIVE_BUBBLE_SORT(array, n)
         RETURN
 
     RECURSIVE_BUBBLE_SORT(array, n - 1)
+```
 
-Complexity Analysis
+### Complexity Analysis
 
-Case           Time Complexity
-Best Case      O(n)
-Average Case   O(n²)
-Worst Case     O(n²)
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(n) |
+| Average Case | O(n²) |
+| Worst Case | O(n²) |
 
-Space Complexity: O(n) due to the recursive call stack.
+**Space Complexity:** O(n) due to the recursive call stack.
 
-Sample Input
+### Sample Input
+
+```text
 64 34 25 12 22 11 90
+```
 
-Sample Output
+### Sample Output
+
+```text
 11 12 22 25 34 64 90
+```
 
-8. Recursive Insertion Sort
+## 8. Recursive Insertion Sort
 
-Problem Statement
-Sort an array in ascending order using a recursive version of the
-Insertion Sort algorithm.
+### Problem Statement
 
-Algorithm / Approach
-The algorithm recursively sorts the first n - 1 elements. It then
-takes the last element and inserts it into its correct position in the
-already sorted portion.
+Sort an array in ascending order using a recursive version of the Insertion Sort algorithm.
 
-Pseudocode
+### Algorithm / Approach
 
+The algorithm recursively sorts the first n - 1 elements. It then takes the last element and inserts it into its correct position in the already sorted portion.
+
+### Pseudocode
+
+```text
 RECURSIVE_INSERTION_SORT(array, n)
 
     IF n <= 1
@@ -274,36 +309,46 @@ RECURSIVE_INSERTION_SORT(array, n)
         j = j - 1
 
     array[j + 1] = key
+```
 
-Complexity Analysis
+### Complexity Analysis
 
-Case           Time Complexity
-Best Case      O(n)
-Average Case   O(n²)
-Worst Case     O(n²)
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(n) |
+| Average Case | O(n²) |
+| Worst Case | O(n²) |
 
-Space Complexity: O(n) due to the recursive call stack.
+**Space Complexity:** O(n) due to the recursive call stack.
 
-Sample Input
+### Sample Input
+
+```text
 12 11 13 5 6
+```
 
-Sample Output
+### Sample Output
+
+```text
 5 6 11 12 13
+```
 
-9. Heap Sort
+## 9. Heap Sort
 
-Problem Statement
+### Problem Statement
+
 Given an unsorted array of elements, sort the array in ascending order using the Heap Sort algorithm.
 
-Algorithm / Approach
+### Algorithm / Approach
+
 Heap Sort uses a Binary Heap data structure to sort elements. It works in two phases:
 
-1. Build Max Heap: Convert the given array into a Max Heap, where the parent node is always greater than or equal to its children.
+1. **Build Max Heap:** Convert the given array into a Max Heap, where the parent node is always greater than or equal to its children.
+2. **Sorting:** Swap the root element (largest element) with the last element of the heap. Reduce the heap size by one and apply the heapify operation to maintain the Max Heap property. Repeat until the entire array is sorted.
 
-2. Sorting: Swap the root element (largest element) with the last element of the heap. Reduce the heap size by one and apply the heapify operation to maintain the Max Heap property. Repeat until the entire array is sorted.
+### Pseudocode
 
-Pseudocode
-
+```text
 HEAP_SORT(array, n)
 
     // Build Max Heap
@@ -334,42 +379,50 @@ HEAPIFY(array, n, i)
         SWAP(array[i], array[largest])
 
         HEAPIFY(array, n, largest)
+```
 
+### Complexity Analysis
 
-Complexity Analysis
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(n log n) |
+| Average Case | O(n log n) |
+| Worst Case | O(n log n) |
 
-Case	Time Complexity
-Best Case	 O(n log n)
-Average Case O(n log n)
-Worst Case	 O(n log n)
+**Space Complexity:** O(log n) auxiliary space due to recursive heapify calls. O(1) if iterative heapify is used.
 
-Space Complexity: O(log n) auxiliary space due to recursive heapify calls. (O(1) if iterative heapify is used.)
+### Sample Input
 
-Sample Input
+```text
 Array: 12 11 13 5 6 7
+```
 
-Sample Output
+### Sample Output
+
+```text
 Sorted Array: 5 6 7 11 12 13
+```
 
+## 10. Strassen Matrix Multiplication
 
-10. Strassen Matrix Multiplication 
+### Problem Statement
 
-Problem Statement
+Given two square matrices of order n × n, multiply them using Strassen's Matrix Multiplication algorithm to obtain the resultant matrix.
 
-Given two square matrices of order n * n, multiply them using Strassen's Matrix Multiplication algorithm to obtain the resultant matrix.
-
-Algorithm / Approach
+### Algorithm / Approach
 
 Strassen's Matrix Multiplication is a divide-and-conquer algorithm used to multiply two matrices efficiently. It divides both matrices into four equal-sized submatrices and performs seven recursive multiplications instead of the eight multiplications required by conventional matrix multiplication.
 
 The algorithm works in the following steps:
-1. Divide: Divide both matrices into four equal-sized submatrices.
-2. Calculate: Compute seven products (P1 to P7) using matrix addition and subtraction.
-3. Combine: Use these seven products to calculate the four submatrices of the resultant matrix.
-4. Repeat: Continue recursively until the matrix size becomes 1 × 1.
 
-Pseudocode
+1. **Divide:** Divide both matrices into four equal-sized submatrices.
+2. **Calculate:** Compute seven products (P1 to P7) using matrix addition and subtraction.
+3. **Combine:** Use these seven products to calculate the four submatrices of the resultant matrix.
+4. **Repeat:** Continue recursively until the matrix size becomes 1 × 1.
 
+### Pseudocode
+
+```text
 STRASSEN(A, B, n)
 
     IF n == 1
@@ -399,18 +452,21 @@ STRASSEN(A, B, n)
     Combine C11, C12, C21, C22
 
     RETURN C
+```
 
+### Complexity Analysis
 
-Complexity Analysis
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(n^2.807) |
+| Average Case | O(n^2.807) |
+| Worst Case | O(n^2.807) |
 
-Case	Time Complexity
-Best Case	 O(n^2.807)
-Average Case O(n^2.807)
-Worst Case	 O(n^2.807)
+**Space Complexity:** O(n²) auxiliary space for storing intermediate matrices (implementation-dependent).
 
-Space Complexity: O(n²) auxiliary space for storing intermediate matrices (implementation-dependent).
+### Sample Input
 
-Sample Input
+```text
 Matrix A:
 1 2
 3 4
@@ -418,48 +474,56 @@ Matrix A:
 Matrix B:
 5 6
 7 8
+```
 
-Sample Output
+### Sample Output
+
+```text
 Resultant Matrix:
 19 22
 43 50
+```
 
-11. Comparison of Algorithms
+## 11. Comparison of Algorithms
 
-Algorithm                  Best Case    Average Case   Worst Case   Space
+| Algorithm | Best Case | Average Case | Worst Case | Space |
+|---|---|---|---|---|
+| Iterative Binary Search | O(1) | O(log n) | O(log n) | O(1) |
+| Recursive Binary Search | O(1) | O(log n) | O(log n) | O(log n) |
+| Merge Sort | O(n log n) | O(n log n) | O(n log n) | O(n) |
+| Quick Sort | O(n log n) | O(n log n) | O(n²) | O(log n)* |
+| Recursive Bubble Sort | O(n) | O(n²) | O(n²) | O(n) |
+| Recursive Insertion Sort | O(n) | O(n²) | O(n²) | O(n) |
+| Heap Sort | O(n log n) | O(n log n) | O(n log n) | O(log n)** |
+| Strassen Matrix Multiplication | O(n^2.807) | O(n^2.807) | O(n^2.807) | O(n²)*** |
 
-Iterative Binary Search    O(1)         O(log n)       O(log n)     O(1)
-Recursive Binary Search    O(1)         O(log n)       O(log n)     O(log n)
-Merge Sort                 O(n log n)   O(n log n)     O(n log n)   O(n)
-Quick Sort                 O(n log n)   O(n log n)     O(n²)        O(log n)*
-Recursive Bubble Sort      O(n)         O(n²)          O(n²)        O(n)
-Recursive Insertion Sort   O(n)         O(n²)          O(n²)        O(n)
-Heap Sort                  O(n log n)   O(n log n)     O(n log n)   O(n log n)
- 
-*Quick Sort uses O(log n) auxiliary stack space on average and can
-require O(n) stack space in the worst case.
+*Quick Sort uses O(log n) auxiliary stack space on average and can require O(n) stack space in the worst case.
 
+**Heap Sort uses O(log n) auxiliary space with recursive heapify and O(1) with iterative heapify.
 
-12. Learning Outcomes
+***Strassen's auxiliary space depends on the implementation and matrix storage strategy.
+
+## 12. Learning Outcomes
 
 After completing this unit, the following concepts were studied:
 
-Understanding the Divide and Conquer approach.
-Understanding recursive problem solving.
-Implementation of Binary Search using iterative and recursive
-approaches.
-Implementation of Merge Sort.
-Implementation of Quick Sort.
-Understanding partitioning and pivot selection in Quick Sort.
-Converting iterative sorting algorithms into recursive
-implementations.
-Understanding recursion and the call stack.
-Comparing time and space complexity.
-Understanding best, average, and worst-case complexity.
-Implementing algorithms using C++.
+1. Understanding the Divide and Conquer approach.
+2. Understanding recursive problem solving.
+3. Implementation of Binary Search using iterative and recursive approaches.
+4. Implementation of Merge Sort.
+5. Implementation of Quick Sort.
+6. Understanding partitioning and pivot selection in Quick Sort.
+7. Converting iterative sorting algorithms into recursive implementations.
+8. Understanding recursion and the call stack.
+9. Comparing time and space complexity.
+10. Understanding best, average, and worst-case complexity.
+11. Understanding Heap Sort and Binary Heap operations.
+12. Understanding Strassen Matrix Multiplication.
+13. Implementing algorithms using C++.
 
-13. Files in This Unit
+## 13. Files in This Unit
 
+```text
 Unit-2-divide-and-conquer/
 │
 ├── iterativeBinarySearch.cpp
@@ -471,13 +535,12 @@ Unit-2-divide-and-conquer/
 ├── heapSort.cpp
 ├── strassenMatrixMultiplication.cpp
 └── README.md
+```
 
-14. Conclusion
+## 14. Conclusion
 
-This unit introduces Divide and Conquer and recursive approaches for
-solving searching and sorting problems. The implementations demonstrate
-how a problem can be divided into smaller parts and solved efficiently
-using recursion. Binary Search, Merge Sort, and Quick Sort provide
-important examples of Divide and Conquer, while the recursive Bubble
-Sort and Insertion Sort implementations help develop a deeper
-understanding of recursion and recursive problem solving.
+This unit introduces Divide and Conquer and recursive approaches for solving searching and sorting problems. The implementations demonstrate how a problem can be divided into smaller parts and solved efficiently using recursion.
+
+Binary Search, Merge Sort, and Quick Sort provide important examples of Divide and Conquer, while the recursive Bubble Sort and Insertion Sort implementations help develop a deeper understanding of recursion and recursive problem solving.
+
+Heap Sort and Strassen Matrix Multiplication further demonstrate the use of efficient data structures and divide-and-conquer techniques in algorithm design.

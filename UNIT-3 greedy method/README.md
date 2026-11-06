@@ -1,12 +1,29 @@
-Unit 03 -- Greedy Method
+# Unit 03 – Greedy Method
+
+## 1. Overview
+
+This unit introduces the Greedy Method, an algorithmic approach used to solve optimization problems by making the locally optimal choice at each step.
+
+The unit focuses on understanding and implementing Fractional Knapsack, Job Sequencing with Deadlines, Prim's Algorithm, and Kruskal's Algorithm.
+
+These algorithms are widely used in resource allocation, scheduling, network design, and optimization problems.
+
+## 2. Algorithms Implemented
+
+The following algorithms are implemented in this unit:
 
 1. Fractional Knapsack
+2. Job Sequencing with Deadlines
+3. Prim's Algorithm
+4. Kruskal's Algorithm
 
-Problem Statement
+## 3. Fractional Knapsack
+
+### Problem Statement
 
 Given a set of items, each having a value and weight, and a knapsack with a fixed capacity, find the maximum total value that can be obtained by selecting items or fractions of items.
 
-Algorithm / Approach
+### Algorithm / Approach
 
 Fractional Knapsack follows the Greedy Method. It selects items according to their value-to-weight ratio in descending order.
 
@@ -17,9 +34,9 @@ Fractional Knapsack follows the Greedy Method. It selects items according to the
 5. Otherwise, take the fraction that fits into the remaining capacity.
 6. Repeat until the knapsack becomes full or all items are considered.
 
+### Pseudocode
 
-Pseudocode
-
+```text
 FRACTIONAL_KNAPSACK(items, n, capacity)
 
     FOR each item
@@ -43,18 +60,21 @@ FRACTIONAL_KNAPSACK(items, n, capacity)
             capacity = 0
 
     RETURN totalValue
+```
 
+### Complexity Analysis
 
-Complexity Analysis
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(n log n) |
+| Average Case | O(n log n) |
+| Worst Case | O(n log n) |
 
-Case	Time Complexity
-Best Case	O(n log n)
-Average Case	O(n log n)
-Worst Case	O(n log n)
+**Space Complexity:** O(n) for storing the items.
 
-Space Complexity: O(n) for storing the items.
+### Sample Input
 
-Sample Input
+```text
 Number of items: 3
 
 Value  Weight
@@ -63,19 +83,21 @@ Value  Weight
 120    30
 
 Knapsack Capacity: 50
+```
 
-Sample Output
+### Sample Output
+
+```text
 Maximum value: 240
+```
 
+## 4. Job Sequencing with Deadlines
 
-
-2. Job Sequencing with Deadlines
-
-Problem Statement
+### Problem Statement
 
 Given a set of jobs, each having a deadline and a profit, schedule the jobs to maximize the total profit. Each job takes one unit of time, and only one job can be performed at a time.
 
-Algorithm / Approach
+### Algorithm / Approach
 
 Job Sequencing follows the Greedy Method. The objective is to select jobs in such a way that maximum profit is obtained while completing each job before its deadline.
 
@@ -86,8 +108,9 @@ Job Sequencing follows the Greedy Method. The objective is to select jobs in suc
 5. Place each job in the latest available slot before or on its deadline.
 6. Calculate the total profit of the scheduled jobs.
 
-Pseudocode
+### Pseudocode
 
+```text
 JOB_SEQUENCING(jobs, n)
 
     SORT jobs by profit in descending order
@@ -111,20 +134,23 @@ JOB_SEQUENCING(jobs, n)
                 BREAK
 
     RETURN totalProfit
+```
 
+### Complexity Analysis
 
-Complexity Analysis
-
-Case	Time Complexity
-Best Case	O(n log n + nD)
-Average Case	O(n log n + nD)
-Worst Case	O(n log n + nD)
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(n log n + nD) |
+| Average Case | O(n log n + nD) |
+| Worst Case | O(n log n + nD) |
 
 Here, D represents the maximum deadline.
 
-Space Complexity: O(D) for storing the time slots.
+**Space Complexity:** O(D) for storing the time slots.
 
-Sample Input
+### Sample Input
+
+```text
 Number of jobs: 5
 
 Job   Deadline   Profit
@@ -133,21 +159,22 @@ J2       1          19
 J3       2          27
 J4       1          25
 J5       3          15
+```
 
+### Sample Output
 
-Sample Output
-
+```text
 Selected Jobs: J3 J1 J5
 Maximum Profit: 142
+```
 
+## 5. Prim's Algorithm
 
-3. Prim's Algorithm
-
-Problem Statement
+### Problem Statement
 
 Given a connected, weighted, undirected graph, find its Minimum Spanning Tree (MST) using Prim's Algorithm.
 
-Algorithm / Approach
+### Algorithm / Approach
 
 Prim's Algorithm is a Greedy algorithm used to find the Minimum Spanning Tree of a connected weighted graph.
 
@@ -158,8 +185,9 @@ Prim's Algorithm is a Greedy algorithm used to find the Minimum Spanning Tree of
 5. Mark the newly selected vertex as visited.
 6. Repeat until all vertices are included in the MST.
 
-Pseudocode
+### Pseudocode
 
+```text
 PRIM(graph, V)
 
     visited[V] = false
@@ -187,18 +215,21 @@ PRIM(graph, V)
 
     PRINT MST edges
     PRINT total MST weight
+```
 
+### Complexity Analysis
 
-Complexity Analysis
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(V²) |
+| Average Case | O(V²) |
+| Worst Case | O(V²) |
 
-Case	Time Complexity
-Best Case	O(V²)
-Average Case	O(V²)
-Worst Case	O(V²)
+**Space Complexity:** O(V²) for the adjacency matrix implementation.
 
-Space Complexity: O(V²) for the adjacency matrix implementation.
+### Sample Input
 
-Sample Input
+```text
 Number of vertices: 5
 
 Adjacency Matrix:
@@ -208,9 +239,11 @@ Adjacency Matrix:
 0 3 0 0 7
 6 8 0 0 9
 0 5 7 9 0
+```
 
+### Sample Output
 
-Sample Output
+```text
 Minimum Spanning Tree:
 
 0 - 1 : 2
@@ -219,15 +252,15 @@ Minimum Spanning Tree:
 0 - 3 : 6
 
 Minimum Cost: 16
+```
 
+## 6. Kruskal's Algorithm
 
+### Problem Statement
 
-4. Kruskal's Algorithm
-
-Problem Statement
 Given a connected, weighted, undirected graph, find its Minimum Spanning Tree using Kruskal's Algorithm.
 
-Algorithm / Approach
+### Algorithm / Approach
 
 Kruskal's Algorithm is a Greedy algorithm that finds the Minimum Spanning Tree by selecting edges in increasing order of their weights.
 
@@ -239,8 +272,9 @@ Kruskal's Algorithm is a Greedy algorithm that finds the Minimum Spanning Tree b
 6. If it forms a cycle, discard the edge.
 7. Repeat until exactly V-1 edges are selected.
 
-Pseudocode
+### Pseudocode
 
+```text
 KRUSKAL(graph, V, E)
 
     SORT all edges in ascending order of weight
@@ -267,18 +301,21 @@ KRUSKAL(graph, V, E)
 
     PRINT MST edges
     PRINT totalCost
+```
 
+### Complexity Analysis
 
-Complexity Analysis
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(E log E) |
+| Average Case | O(E log E) |
+| Worst Case | O(E log E) |
 
-Case	Time Complexity
-Best Case	O(E log E)
-Average Case	O(E log E)
-Worst Case	O(E log E)
+**Space Complexity:** O(V + E) for storing edges and the Disjoint Set data structure.
 
-Space Complexity: O(V + E) for storing edges and the Disjoint Set data structure.
+### Sample Input
 
-Sample Input
+```text
 Number of vertices: 5
 Number of edges: 7
 
@@ -291,9 +328,11 @@ Source  Destination  Weight
 1          4           5
 2          4           7
 3          4           9
+```
 
+### Sample Output
 
-Sample Output
+```text
 Minimum Spanning Tree:
 
 0 - 1 : 2
@@ -302,20 +341,21 @@ Minimum Spanning Tree:
 0 - 3 : 6
 
 Minimum Cost: 16
+```
 
+## 7. Comparison of Algorithms
 
+| Algorithm | Technique | Time Complexity |
+|---|---|---|
+| Fractional Knapsack | Greedy | O(n log n) |
+| Job Sequencing | Greedy | O(n log n + nD) |
+| Prim's Algorithm | Greedy | O(V²) |
+| Kruskal's Algorithm | Greedy | O(E log E) |
 
-5. Comparison of Algorithms
-
-Algorithm/Technique	            Time Complexity
-Fractional Knapsack	Greedy	     O(n log n)
-Job Sequencing	Greedy	         O(n log n + nD)
-Prim's	Greedy	                 O(V²)
-Kruskal's	Greedy	             O(E log E)
-
-6. Learning Outcomes
+## 8. Learning Outcomes
 
 After completing this unit, the following concepts were studied:
+
 1. Understanding the Greedy Method.
 2. Solving optimization problems using greedy choices.
 3. Implementing Fractional Knapsack.
@@ -325,11 +365,22 @@ After completing this unit, the following concepts were studied:
 7. Understanding cycle detection and Disjoint Set Union.
 8. Comparing time and space complexities of greedy algorithms.
 
+## 9. Files in This Unit
 
+```text
 Unit-3-greedy-method/
-|
-|── fractionalKnapsack.cpp
-|── jobScheduling.cpp
-|── primsAlgorithm.cpp
-|── kruskalsAlgorithm.cpp
-└──README.md
+│
+├── fractionalKnapsack.cpp
+├── jobScheduling.cpp
+├── primsAlgorithm.cpp
+├── kruskalsAlgorithm.cpp
+└── README.md
+```
+
+## 10. Conclusion
+
+This unit introduces the Greedy Method, an important algorithmic technique used to solve optimization problems by making locally optimal choices at each step.
+
+The implementations of Fractional Knapsack, Job Sequencing with Deadlines, Prim's Algorithm, and Kruskal's Algorithm demonstrate how greedy strategies can be applied to resource allocation, scheduling, and Minimum Spanning Tree problems.
+
+These algorithms provide a foundation for understanding optimization techniques and more advanced algorithmic problem-solving approaches.

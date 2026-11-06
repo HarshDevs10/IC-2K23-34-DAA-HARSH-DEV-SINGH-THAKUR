@@ -1,30 +1,29 @@
-Unit 04 -- Dynamic Programming
+# Unit 04 – Dynamic Programming
 
-1. Overview
+## 1. Overview
 
 This unit introduces the Dynamic Programming approach for solving optimization and computational problems. Dynamic Programming solves complex problems by breaking them into smaller overlapping subproblems and storing their results to avoid repeated calculations.
 
 The unit focuses on Memoization, Optimal Substructure, and solving problems involving Fibonacci numbers, Knapsack, Shortest Paths, Multistage Graphs, and Travelling Salesperson Problem (TSP).
 
-
-2. Algorithms Implemented
+## 2. Algorithms Implemented
 
 The following algorithms are implemented in this unit:
+
 1. Memoized Fibonacci
 2. 0/1 Knapsack
 3. Multistage Graph
 4. Floyd-Warshall Algorithm
-5. Shortest Path using Dynamic Programming
+5. Shortest Path using Dynamic Programming (Bellman-Ford)
 6. Travelling Salesperson Problem (TSP)
 
+## 3. Memoized Fibonacci
 
-3. Memoized Fibonacci
-
-Problem Statement
+### Problem Statement
 
 Given an integer n, calculate the nth Fibonacci number using Dynamic Programming with Memoization.
 
-Algorithm / Approach
+### Algorithm / Approach
 
 Memoization is a top-down Dynamic Programming technique. It stores previously calculated Fibonacci values in an array to avoid repeated calculations.
 
@@ -35,8 +34,9 @@ Memoization is a top-down Dynamic Programming technique. It stores previously ca
 5. Otherwise, recursively calculate the two previous Fibonacci numbers.
 6. Store and return the result.
 
-Pseudocode
+### Pseudocode
 
+```text
 FIBONACCI(n, dp)
 
     IF n <= 1
@@ -49,33 +49,39 @@ FIBONACCI(n, dp)
             + FIBONACCI(n-2, dp)
 
     RETURN dp[n]
+```
 
+### Complexity Analysis
 
-Complexity Analysis
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(1) |
+| Average Case | O(n) |
+| Worst Case | O(n) |
 
-Case	Time Complexity
-Best Case	O(1)
-Average Case	O(n)
-Worst Case	O(n)
+**Space Complexity:** O(n) due to the memoization array and recursive call stack.
 
-Space Complexity: O(n) due to the memoization array and recursive call stack.
+### Sample Input
 
-Sample Input
+```text
 Enter n: 7
+```
 
-Sample Output
+### Sample Output
+
+```text
 Fibonacci number: 13
+```
 
+## 4. 0/1 Knapsack
 
-
-4. 0/1 Knapsack
-
-Problem Statement
+### Problem Statement
 
 Given n items, each having a weight and value, and a knapsack with a fixed capacity W, find the maximum total value that can be obtained without exceeding the capacity.
+
 Each item can either be selected completely or not selected at all.
 
-Algorithm / Approach
+### Algorithm / Approach
 
 The 0/1 Knapsack problem uses Dynamic Programming to find the maximum possible value.
 
@@ -86,8 +92,9 @@ The 0/1 Knapsack problem uses Dynamic Programming to find the maximum possible v
 5. Otherwise, choose the maximum value between including and excluding the item.
 6. The final answer is stored in dp[n][W].
 
-Pseudocode
+### Pseudocode
 
+```text
 KNAPSACK(weight, value, n, W)
 
     CREATE dp[n+1][W+1]
@@ -109,18 +116,21 @@ KNAPSACK(weight, value, n, W)
                 dp[i][w] = dp[i-1][w]
 
     RETURN dp[n][W]
+```
 
+### Complexity Analysis
 
-Complexity Analysis
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(nW) |
+| Average Case | O(nW) |
+| Worst Case | O(nW) |
 
-Case	Time Complexity
-Best Case	O(nW)
-Average Case	O(nW)
-Worst Case	O(nW)
+**Space Complexity:** O(nW) for the DP table.
 
-Space Complexity: O(nW) for the DP table.
+### Sample Input
 
-Sample Input
+```text
 Number of items: 3
 Knapsack Capacity: 50
 
@@ -128,19 +138,21 @@ Weight  Value
 10       60
 20       100
 30       120
+```
 
-Sample Output
+### Sample Output
+
+```text
 Maximum Value: 220
+```
 
+## 5. Multistage Graph
 
-
-5. Multistage Graph
-
-Problem Statement
+### Problem Statement
 
 Given a weighted directed multistage graph, find the shortest path from the source vertex to the destination vertex.
 
-Algorithm / Approach
+### Algorithm / Approach
 
 A Multistage Graph is a directed graph in which vertices are divided into different stages. Edges connect vertices from an earlier stage to a later stage.
 
@@ -153,8 +165,9 @@ Dynamic Programming is used to calculate the minimum cost from each vertex to th
 5. Store the minimum cost and the next vertex in the path.
 6. Follow the stored path from source to destination.
 
-Pseudocode
+### Pseudocode
 
+```text
 MULTISTAGE_GRAPH(graph, V)
 
     cost[destination] = 0
@@ -174,18 +187,21 @@ MULTISTAGE_GRAPH(graph, V)
 
     PRINT shortest path
     RETURN cost[source]
+```
 
+### Complexity Analysis
 
-Complexity Analysis
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(V + E) |
+| Average Case | O(V + E) |
+| Worst Case | O(V + E) |
 
-Case	Time Complexity
-Best Case	O(V + E)
-Average Case	O(V + E)
-Worst Case	O(V + E)
+**Space Complexity:** O(V) auxiliary space for storing minimum costs and next vertices, excluding graph storage.
 
-Space Complexity: O(V) auxiliary space for storing minimum costs and next vertices, excluding graph storage.
+### Sample Input
 
-Sample Input
+```text
 Number of vertices: 8
 
 Adjacency Matrix:
@@ -198,22 +214,23 @@ Adjacency Matrix:
 0 0 0 0 0 0 0 2
 0 0 0 0 0 0 0 1
 0 0 0 0 0 0 0 0
+```
 
+### Sample Output
 
-Sample Output
+```text
 Shortest Path: 1 -> 2 -> 4 -> 6 -> 8
 
 Minimum Cost: 7
+```
 
+## 6. Floyd-Warshall Algorithm
 
-
-6. Floyd-Warshall Algorithm
-
-Problem Statement
+### Problem Statement
 
 Given a weighted graph represented by an adjacency matrix, find the shortest distances between all pairs of vertices.
 
-Algorithm / Approach
+### Algorithm / Approach
 
 Floyd-Warshall is a Dynamic Programming algorithm used to find all-pairs shortest paths in a weighted graph.
 
@@ -224,8 +241,9 @@ Floyd-Warshall is a Dynamic Programming algorithm used to find all-pairs shortes
 5. Repeat for all vertices.
 6. The final matrix contains the shortest distances between all pairs.
 
-Pseudocode
+### Pseudocode
 
+```text
 FLOYD_WARSHALL(dist, V)
 
     FOR k = 0 to V-1
@@ -243,18 +261,21 @@ FLOYD_WARSHALL(dist, V)
                     )
 
     PRINT dist
+```
 
+### Complexity Analysis
 
-Complexity Analysis
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(V³) |
+| Average Case | O(V³) |
+| Worst Case | O(V³) |
 
-Case	Time Complexity
-Best Case	O(V³)
-Average Case	O(V³)
-Worst Case	O(V³)
+**Space Complexity:** O(V²) for storing the distance matrix.
 
-Space Complexity: O(V²) for storing the distance matrix.
+### Sample Input
 
-Sample Input
+```text
 Number of vertices: 4
 
 Adjacency Matrix:
@@ -263,28 +284,28 @@ Adjacency Matrix:
 INF 0   3   INF
 INF INF 0   1
 INF INF INF 0
+```
 
+### Sample Output
 
-Sample Output
+```text
 Shortest Distance Matrix:
 
 0   5   8   9
 INF 0   3   4
 INF INF 0   1
 INF INF INF 0
+```
 
+## 7. Shortest Path (Bellman-Ford Algorithm)
 
-
-7. Shortest Path (Bellman-Ford Algorithm)
-
-Problem Statement
+### Problem Statement
 
 Given a weighted directed graph and a source vertex, find the shortest distance from the source vertex to all other vertices. The graph may contain negative edge weights.
 
-Algorithm / Approach
+### Algorithm / Approach
 
-Bellman-Ford is a Dynamic Programming-based algorithm that calculates shortest paths by repeatedly 
-relaxing all edges.
+Bellman-Ford is a Dynamic Programming-based algorithm that calculates shortest paths by repeatedly relaxing all edges.
 
 1. Initialize the distance of the source vertex as zero.
 2. Initialize all other vertex distances as infinity.
@@ -293,8 +314,9 @@ relaxing all edges.
 5. Perform one additional iteration to check for negative-weight cycles.
 6. Display the shortest distances.
 
-Pseudocode
+### Pseudocode
 
+```text
 BELLMAN_FORD(edges, V, E, source)
 
     FOR i = 0 to V-1
@@ -320,18 +342,21 @@ BELLMAN_FORD(edges, V, E, source)
             RETURN
 
     PRINT dist
+```
 
+### Complexity Analysis
 
-Complexity Analysis
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(VE) |
+| Average Case | O(VE) |
+| Worst Case | O(VE) |
 
-Case	Time Complexity
-Best Case	O(VE)
-Average Case	O(VE)
-Worst Case	O(VE)
+**Space Complexity:** O(V) auxiliary space, excluding graph storage.
 
-Space Complexity: O(V) auxiliary space, excluding graph storage.
+### Sample Input
 
-Sample Input
+```text
 Number of vertices: 5
 Number of edges: 8
 Source vertex: 0
@@ -346,9 +371,11 @@ Source Destination Weight
 3      2            5
 3      1            1
 4      3           -3
+```
 
+### Sample Output
 
-Sample Output
+```text
 Vertex    Distance from Source
 
 0         0
@@ -356,16 +383,15 @@ Vertex    Distance from Source
 2         2
 3        -2
 4         1
+```
 
+## 8. Travelling Salesperson Problem (TSP)
 
-
-8. Travelling Salesperson Problem (TSP)
-
-Problem Statement
+### Problem Statement
 
 Given a set of cities and the distances between every pair of cities, find the minimum-cost tour that visits every city exactly once and returns to the starting city.
 
-Algorithm / Approach
+### Algorithm / Approach
 
 The Travelling Salesperson Problem can be solved using Dynamic Programming with Bitmasking.
 
@@ -377,8 +403,9 @@ The Travelling Salesperson Problem can be solved using Dynamic Programming with 
 6. After visiting all cities, return to the starting city.
 7. Calculate the minimum tour cost.
 
-Pseudocode
+### Pseudocode
 
+```text
 TSP(dist, n)
 
     CREATE dp[2^n][n]
@@ -413,18 +440,21 @@ TSP(dist, n)
         )
 
     RETURN answer
+```
 
+### Complexity Analysis
 
-Complexity Analysis
+| Case | Time Complexity |
+|---|---|
+| Best Case | O(n² × 2ⁿ) |
+| Average Case | O(n² × 2ⁿ) |
+| Worst Case | O(n² × 2ⁿ) |
 
-Case	Time Complexity
-Best Case	O(n² × 2ⁿ)
-Average Case	O(n² × 2ⁿ)
-Worst Case	O(n² × 2ⁿ)
+**Space Complexity:** O(n × 2ⁿ) for the DP table.
 
-Space Complexity: O(n × 2ⁿ) for the DP table.
+### Sample Input
 
-Sample Input
+```text
 Number of cities: 4
 
 Distance Matrix:
@@ -433,28 +463,29 @@ Distance Matrix:
 10  0  35  25
 15 35   0  30
 20 25  30   0
+```
 
+### Sample Output
 
-Sample Output
+```text
 Minimum Tour Cost: 80
+```
 
+## 9. Comparison of Algorithms
 
+| Algorithm | Time Complexity |
+|---|---|
+| Memoized Fibonacci | O(n) |
+| 0/1 Knapsack | O(nW) |
+| Multistage Graph | O(V + E) |
+| Floyd-Warshall | O(V³) |
+| Bellman-Ford | O(VE) |
+| TSP (Bitmask DP) | O(n² × 2ⁿ) |
 
-9. Comparison of Algorithms
-
-Algorithm	         Best Time
-Memoized Fibonacci	   O(n)
-0/1 Knapsack	       O(nW)
-Multistage Graph	   O(V + E)
-Floyd-Warshall	       O(V³)
-Bellman-Ford	       O(VE)
-TSP (Bitmask DP)	   O(n² × 2ⁿ)
-
-
-
-10. Learning Outcomes
+## 10. Learning Outcomes
 
 After completing this unit, the following concepts were studied:
+
 1. Understanding the Dynamic Programming approach.
 2. Understanding Memoization and overlapping subproblems.
 3. Implementing Fibonacci using Memoization.
@@ -465,9 +496,10 @@ After completing this unit, the following concepts were studied:
 8. Solving the Travelling Salesperson Problem using Bitmasking.
 9. Understanding optimal substructure.
 10. Comparing time and space complexities of Dynamic Programming algorithms.
-11. Files in This Unit
 
+## 11. Files in This Unit
 
+```text
 Unit-4-dynamic-programming/
 │
 ├── memoizedFibonacci.cpp
@@ -477,9 +509,10 @@ Unit-4-dynamic-programming/
 ├── shortestPath.cpp
 ├── tsp.cpp
 └── README.md
+```
 
+## 12. Conclusion
 
-12. Conclusion
 This unit introduces Dynamic Programming as an efficient approach for solving complex optimization problems. The implementations demonstrate how storing previously calculated results avoids repeated computations and improves efficiency.
 
 Memoized Fibonacci, 0/1 Knapsack, Multistage Graph, Floyd-Warshall, Bellman-Ford, and Travelling Salesperson Problem provide practical examples of Dynamic Programming applications in C++.
