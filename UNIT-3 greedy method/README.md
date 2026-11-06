@@ -327,9 +327,9 @@ After completing this unit, the following concepts were studied:
 
 
 Unit-3-greedy-method/
-│
-├── fractionalKnapsack.cpp
-├── jobSequencing.cpp
-├── primsAlgorithm.cpp
-├── kruskalsAlgorithm.cpp
-└── README.md
+|
+|── fractionalKnapsack.cpp
+|── jobScheduling.cpp
+|── primsAlgorithm.cpp
+|── kruskalsAlgorithm.cpp
+└──README.md
